@@ -1,9 +1,16 @@
-const removeFromArray = function(arr) {
-    const args = Array.prototype.slice.call(arguments, 1);
-    return arr.filter( (item) => {
-        for(arg of args){
-            return item !== arg;
+const removeFromArray = function(arr, ...itemToDelete) {
+    return arr.filter((item) => {
+        let isDel = false;
+        for(arg of itemToDelete){
+            if (item === arg){
+                isDel = true;
+                break;
+            }
         }
+        if (isDel === false){
+            return item;
+        }
+
     })
 };
 
